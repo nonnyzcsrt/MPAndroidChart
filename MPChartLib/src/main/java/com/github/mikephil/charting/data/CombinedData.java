@@ -177,44 +177,28 @@ public class CombinedData extends BarLineScatterCandleBubbleData<IBarLineScatter
     @Override
     public Entry getEntryForHighlight(Highlight highlight) {
 
-        if (highlight.getDataIndex() >= getAllData().size())
+        List<BarLineScatterCandleBubbleData> dataObjects = getAllData();
+
+        if (highlight.getDataIndex() >= dataObjects.size())
             return null;
 
-        ChartData data = getDataByIndex(highlight.getDataIndex());
+        ChartData data = dataObjects.get(highlight.getDataIndex());
 
         if (highlight.getDataSetIndex() >= data.getDataSetCount())
             return null;
+        else {
+            // The value of the highlighted entry could be NaN -
+            //   if we are not interested in highlighting a specific value.
 
-        // The value of the highlighted entry could be NaN -
-        //   if we are not interested in highlighting a specific value.
+            List<Entry> entries = data.getDataSetByIndex(highlight.getDataSetIndex())
+                    .getEntriesForXValue(highlight.getX());
+            for (Entry entry : entries)
+                if (entry.getY() == highlight.getY() ||
+                        Float.isNaN(highlight.getY()))
+                    return entry;
 
-        List<Entry> entries = data.getDataSetByIndex(highlight.getDataSetIndex())
-                .getEntriesForXValue(highlight.getX());
-        for (Entry entry : entries)
-            if (entry.getY() == highlight.getY() ||
-                    Float.isNaN(highlight.getY()))
-                return entry;
-
-        return null;
-    }
-
-    /**
-     * Get dataset for highlight
-     *
-     * @param highlight current highlight
-     * @return dataset related to highlight
-     */
-    public IBarLineScatterCandleBubbleDataSet<? extends Entry> getDataSetByHighlight(Highlight highlight) {
-        if (highlight.getDataIndex() >= getAllData().size())
             return null;
-
-        BarLineScatterCandleBubbleData data = getDataByIndex(highlight.getDataIndex());
-
-        if (highlight.getDataSetIndex() >= data.getDataSetCount())
-            return null;
-
-        return (IBarLineScatterCandleBubbleDataSet<? extends Entry>)
-                data.getDataSets().get(highlight.getDataSetIndex());
+        }
     }
 
     public int getDataIndex(ChartData data) {

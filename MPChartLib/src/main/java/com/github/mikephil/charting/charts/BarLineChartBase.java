@@ -78,8 +78,7 @@ public abstract class BarLineChartBase<T extends BarLineScatterCandleBubbleData<
     /**
      * if true, dragging is enabled for the chart
      */
-    private boolean mDragXEnabled = true;
-    private boolean mDragYEnabled = true;
+    private boolean mDragEnabled = true;
 
     private boolean mScaleXEnabled = true;
     private boolean mScaleYEnabled = true;
@@ -1098,8 +1097,7 @@ public abstract class BarLineChartBase<T extends BarLineScatterCandleBubbleData<
      * @param enabled
      */
     public void setDragEnabled(boolean enabled) {
-        this.mDragXEnabled = enabled;
-        this.mDragYEnabled = enabled;
+        this.mDragEnabled = enabled;
     }
 
     /**
@@ -1108,43 +1106,7 @@ public abstract class BarLineChartBase<T extends BarLineScatterCandleBubbleData<
      * @return
      */
     public boolean isDragEnabled() {
-        return mDragXEnabled || mDragYEnabled;
-    }
-
-    /**
-     * Set this to true to enable dragging on the X axis
-     *
-     * @param enabled
-     */
-    public void setDragXEnabled(boolean enabled) {
-        this.mDragXEnabled = enabled;
-    }
-
-    /**
-     * Returns true if dragging on the X axis is enabled for the chart, false if not.
-     *
-     * @return
-     */
-    public boolean isDragXEnabled() {
-        return mDragXEnabled;
-    }
-
-    /**
-     * Set this to true to enable dragging on the Y axis
-     *
-     * @param enabled
-     */
-    public void setDragYEnabled(boolean enabled) {
-        this.mDragYEnabled = enabled;
-    }
-
-    /**
-     * Returns true if dragging on the Y axis is enabled for the chart, false if not.
-     *
-     * @return
-     */
-    public boolean isDragYEnabled() {
-        return mDragYEnabled;
+        return mDragEnabled;
     }
 
     /**

@@ -28,7 +28,7 @@ public class PieEntry extends Entry {
         super(0f, value, icon, data);
     }
 
-    public PieEntry(float value, String label) {
+    public PieEntry(float value,String label) {
         super(0f, value);
         this.label = label;
     }

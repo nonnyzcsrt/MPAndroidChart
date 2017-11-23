@@ -52,8 +52,12 @@ public class ColorTemplate {
             Color.rgb(140, 234, 255), Color.rgb(255, 140, 157)
     };
     public static final int[] MATERIAL_COLORS = {
-            rgb("#2ecc71"), rgb("#f1c40f"), rgb("#e74c3c"), rgb("#3498db")
+            rgb("#2A84C3"), rgb("#DAD63C"), rgb("#ED9938"), rgb("#F6C335"),rgb("#855097"),rgb("#A7A99F")
     };
+    public static final int[] MATERIAL_COLORS_GRAPH_AM = {
+            rgb("#662C96"), rgb("#9B9F94"), rgb("#0E1F9F"), rgb("#009628"),rgb("#FEC222"),rgb("#00A3E5")
+    };
+
 
     /**
      * Converts the given hex-color-string to rgb.
@@ -78,6 +82,9 @@ public class ColorTemplate {
         return Color.rgb(51, 181, 229);
     }
 
+    public static int getHoloGray() {
+        return Color.rgb(128,128,128);
+    }
     /**
      * Sets the alpha component of the given color.
      *
